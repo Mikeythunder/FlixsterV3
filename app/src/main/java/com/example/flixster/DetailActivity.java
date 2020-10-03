@@ -46,17 +46,13 @@ public class DetailActivity extends YouTubeBaseActivity {
 
         //findViewById(R.id.____) gets the value of the view from the layout
             //so for tvTitle it is setting the tvTitle variable as whatever value is in the tvTitle textView in the layout
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_detail);
 
-        //How to get values without Binding the values: (Stretch Story)
+        //Old way to get movie information without binding:
 //        tvTitle = findViewById(R.id.tvTitle);
 //        tvOverview = findViewById(R.id.tvOverview);
 //        ratingBar = findViewById(R.id.ratingBar);
         youTubePlayerView = findViewById(R.id.player);
-
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_detail);
-        // Store the field now if you'd like without any need for casting
-
-        // Or use the binding to update views directly on the binding
 
 
         //this will now get the title name and put it on the display activity
@@ -65,10 +61,12 @@ public class DetailActivity extends YouTubeBaseActivity {
 
         //getParcelableExtra is from Parcalbe Library
         Movie movie = Parcels.unwrap(getIntent().getParcelableExtra("movie"));
-//        tvTitle.setText(movie.getTitle());
         binding.tvTitle.setText(movie.getTitle());
         binding.tvOverview.setText(movie.getOverview());
         binding.ratingBar.setRating((float) movie.getRating());
+
+    //Old way to get movie information without binding:
+//        tvTitle.setText(movie.getTitle());
 //        tvOverview.setText(movie.getOverview());
 //        ratingBar.setRating((float) movie.getRating());
 
