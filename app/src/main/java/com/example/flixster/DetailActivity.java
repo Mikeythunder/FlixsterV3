@@ -1,6 +1,7 @@
 package com.example.flixster;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -11,6 +12,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.codepath.asynchttpclient.AsyncHttpClient;
 import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler;
+import com.example.flixster.databinding.ActivityDetailBinding;
 import com.example.flixster.models.Movie;
 import com.google.android.youtube.player.YouTubeBaseActivity;
 import com.google.android.youtube.player.YouTubeInitializationResult;
@@ -29,6 +31,7 @@ public class DetailActivity extends YouTubeBaseActivity {
     //Copy in the API key you made, and set it as a variable  (final used because this is the final version of the variable)
     public static final  String YOUTUBE_API_KEY = "AIzaSyA4v3KXkszVpGFyS-gIpAw1V-HuQung8Hs";
     public static final String VIDEOS_URL = "https://api.themoviedb.org/3/movie/%d/videos?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed";
+    private ActivityDetailBinding binding;
 
     TextView tvTitle;
     TextView tvOverview;
@@ -44,10 +47,16 @@ public class DetailActivity extends YouTubeBaseActivity {
         //findViewById(R.id.____) gets the value of the view from the layout
             //so for tvTitle it is setting the tvTitle variable as whatever value is in the tvTitle textView in the layout
 
-        tvTitle = findViewById(R.id.tvTitle);
-        tvOverview = findViewById(R.id.tvOverview);
-        ratingBar = findViewById(R.id.ratingBar);
+        //How to get values without Binding the values: (Stretch Story)
+//        tvTitle = findViewById(R.id.tvTitle);
+//        tvOverview = findViewById(R.id.tvOverview);
+//        ratingBar = findViewById(R.id.ratingBar);
         youTubePlayerView = findViewById(R.id.player);
+
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_detail);
+        // Store the field now if you'd like without any need for casting
+
+        // Or use the binding to update views directly on the binding
 
 
         //this will now get the title name and put it on the display activity
@@ -56,9 +65,12 @@ public class DetailActivity extends YouTubeBaseActivity {
 
         //getParcelableExtra is from Parcalbe Library
         Movie movie = Parcels.unwrap(getIntent().getParcelableExtra("movie"));
-        tvTitle.setText(movie.getTitle());
-        tvOverview.setText(movie.getOverview());
-        ratingBar.setRating((float) movie.getRating());
+//        tvTitle.setText(movie.getTitle());
+        binding.tvTitle.setText(movie.getTitle());
+        binding.tvOverview.setText(movie.getOverview());
+        binding.ratingBar.setRating((float) movie.getRating());
+//        tvOverview.setText(movie.getOverview());
+//        ratingBar.setRating((float) movie.getRating());
 
 
 
