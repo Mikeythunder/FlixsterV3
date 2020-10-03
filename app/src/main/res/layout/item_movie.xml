@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:background="#000000"
-    android:id="@+id/RelativeLayout"
+    android:id="@+id/Container"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -18,10 +19,12 @@
         android:layout_marginTop="0dp"
         android:layout_toEndOf="@+id/ivPoster"
         android:text="Mulan"
+        android:transitionName="profile"
         android:textColor="#FFFFFF"
         android:textSize="24sp" />
 
     <ImageView
+
         android:id="@+id/ivPoster"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
@@ -43,3 +46,4 @@
         android:text="When the Emperor of China issues a decree that one man per family must serve in the Imperial Chinese Army to defend the country from Huns, Hua Mulan, the eldest daughter of an honored warrior, steps in to take the place of her ailing father. She is spirited, determined and quick on her feet. Disguised as a man by the name of Hua Jun, she is tested every step of the way and must harness her innermost strength and embrace her true potential." />
 
 </RelativeLayout>
+</layout>
